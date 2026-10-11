@@ -85,6 +85,13 @@ Restore the `.bak.*` files, `chsh -s /bin/bash`, disable Forge in the
 Extensions app, and reset the shortcuts under Settings → Keyboard → View and
 Customize Shortcuts.
 
+## Contributing
+
+Contributions are welcome. Issues and pull requests for fixes, support for
+newer Ubuntu/GNOME releases, or extra tweaks are all appreciated. If you try
+this on something other than Ubuntu 22.04, a note on what worked and what
+didn't is especially useful.
+
 ## License
 
 [MIT](LICENSE)
