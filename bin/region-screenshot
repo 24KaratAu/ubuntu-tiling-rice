@@ -1,0 +1,12 @@
+#!/bin/sh
+# Select a screen region and copy it to the clipboard as a PNG.
+
+f="$(mktemp --suffix=.png)" || exit 1
+trap 'rm -f "$f"' EXIT
+
+gnome-screenshot -a -f "$f" || exit 1
+
+# gnome-screenshot exits 0 when the selection is cancelled, leaving no image.
+[ -s "$f" ] || exit 0
+
+wl-copy --type image/png < "$f"

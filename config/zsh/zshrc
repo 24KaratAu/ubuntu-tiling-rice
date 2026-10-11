@@ -1,0 +1,39 @@
+# History
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+
+# Syntax highlighting
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Autosuggestions
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# Useful completion
+autoload -Uz compinit
+compinit
+
+# Prompt
+PROMPT='%F{cyan}%n@%m%f %F{blue}%~%f %# '
+# Better command editing
+bindkey -e
+
+# Up arrow: accept autosuggestion, otherwise browse history
+function my-up-line-or-history() {
+    if [[ -n "$POSTDISPLAY" ]]; then
+        zle _zsh_autosuggest_widget_accept
+    else
+        zle up-line-or-history
+    fi
+}
+
+zle -N my-up-line-or-history
+
+bindkey -M emacs '^[[A' my-up-line-or-history
+bindkey -M viins '^[[A' my-up-line-or-history
+
+export PATH="$HOME/.local/bin:$PATH"
